@@ -434,16 +434,14 @@ class Player:
         #
         # Adds the specified card to the top of the Player's discard pile.
         #
-        # If this Player is playing Aquaman AND the card costs 5 or less
-        #   AND Aquaman's power hasn't been triggered yet this turn...
-        if (self.hero.name == "Aquaman") and (card.cost <= 5) (self.hero.triggered == []):
+        # If this Player is playing Aquaman AND the card costs 5 or less...
+        if (self.hero.name == "Aquaman") and (card.cost <= 5)):
             # Prompt the player to choose whether to use Aquaman's power on this turn.
             choice = input("Would you like to put this card at the bottom of your deck? (Y / N) ")
-            # If player says yes, add this card name to the triggered list,
-            #   and put the card on the bottom of the player's deck.
+            # If player says yes,
+            #   put the card on the top of the player's deck.
             if choice == "Y" or choice == "y":
-                self.hero.triggered = self.hero.triggered + [card.name]
-                self.deck.drawdeck.add_to_bottom(card)
+                self.deck.drawdeck.add_to_top(card)
             # If the player says no, gain the card normally.
             elif choice == "N" or choice == "n":
                 self.deck.discards.add_to_top(card)
